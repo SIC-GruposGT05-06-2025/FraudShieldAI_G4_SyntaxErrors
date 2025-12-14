@@ -281,35 +281,9 @@ INTEGRACIÓN:
    11. Deploy a producción
 
 
-┌─────────────────────────────────────────────────────────────────────────┐
-│                        ESTADÍSTICAS                                      │
-└─────────────────────────────────────────────────────────────────────────┘
-
- DESARROLLO:
-   • Archivos creados: 15
-   • Archivos modificados: 4
-   • Líneas de código: 2,000+
-   • Líneas de docs: 15,000+
-   • Endpoints: 7
-   • Funciones API: 6
-   • Configuraciones: 6
-
- COBERTURA:
-   • Backend:  100%
-   • Frontend:  100%
-   • Integración:  100%
-   • Documentación:  100%
-   • Docker:  100%
-
-  TIEMPO:
-   • Integración:  Completada
-   • Testing: ⏳ Próximo
-   • Deployment: ⏳ Próximo
-   • Production: ⏳ Después
-
 
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                      RESUMEN EJECUTIVO                                   │
+│                      RESUMEN                                            |
 └─────────────────────────────────────────────────────────────────────────┘
 
 La integración backend-frontend de FraudShieldAI está COMPLETADA y LISTA
@@ -360,7 +334,7 @@ O localmente:
   Terminal 1: cd backend && venv\Scripts\activate && uvicorn app.main:app --reload
   Terminal 2: cd frontend && pnpm dev
 
-Luego abre: http://localhost:3000
+Abrir: http://localhost:3000
 
 ═══════════════════════════════════════════════════════════════════════════
 
@@ -373,29 +347,3 @@ Estado:  COMPLETO Y OPERATIVO
 
 ═══════════════════════════════════════════════════════════════════════════
 ```
-
-## 📍 Ubicación de Archivos Principales
-
-| Tarea | Ubicación |
-|-------|-----------|
-|  Iniciar rápido | `QUICK_START.md` |
-|  Guía completa | `INTEGRATION_GUIDE.md` |
-|  Windows setup | `WINDOWS_SETUP_GUIDE.md` |
-|  Checklist | `INTEGRATION_CHECKLIST.md` |
-|  Resumen | `INTEGRATION_SUMMARY.md` |
-|  Técnico | `BACKEND_FRONTEND_INTEGRATION.md` |
-|  Docker | `docker-compose.yml` |
-|  Config Backend | `backend/.env` |
-|  Config Frontend | `frontend/.env.local` |
-
-##  Siguientes Pasos
-
-1. Ejecutar uno de los comandos de inicio
-2. Verificar que todo funciona en http://localhost:3000
-3. Hacer una predicción de prueba
-4. Revisar el historial
-5. ¡Comenzar a desarrollar!
-
----
-
-**¡Integración Completada Exitosamente!** 
