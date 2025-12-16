@@ -27,10 +27,10 @@ def train_model():
         class_weight="balanced"
     )
 
-    print("Entrenando modelo...")
+    print("Entrenando modelo....")
     model.fit(X_train, y_train)
 
-    print("Evaluando...")
+    print("Evaluando....")
     preds = model.predict(X_test)
     print(classification_report(y_test, preds))
 
