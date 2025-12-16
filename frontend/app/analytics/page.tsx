@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Target, CheckCircle, Eye } from "lucide-react"
+import { BarChart3, CheckCircle, Eye } from "lucide-react"
 import { ModelPerformanceCard } from "@/components/analytics/model-performance-card"
 import { FraudTrendsChart } from "@/components/analytics/fraud-trends-chart"
 import { RiskPieChart } from "@/components/dashboard/risk-pie-chart"
@@ -57,18 +57,18 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-linear-to-br from-background to-muted/10 min-h-screen">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-balance">Analytics</h1>
         <p className="text-muted-foreground mt-2">Deep insights into model performance and fraud patterns</p>
       </div>
 
       {/* Model Performance Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <ModelPerformanceCard
           title="Model Accuracy"
           value={`${(modelInfo.accuracy * 100).toFixed(2)}%`}
-          icon={Target}
+          icon={BarChart3}
           colorClass="text-primary"
         />
         <ModelPerformanceCard
@@ -77,23 +77,9 @@ export default function AnalyticsPage() {
           icon={CheckCircle}
           colorClass="text-success"
         />
-        <ModelPerformanceCard
-          title="Fraud Recall"
-          value={`${(modelInfo.recall * 100).toFixed(2)}%`}
-          icon={Eye}
-          colorClass="text-warning"
-        />
       </div>
 
-      {/* Charts Row 1 */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2">
-          <FraudTrendsChart data={trends} />
-        </div>
-        <div className="lg:col-span-1">
-          <RiskPieChart data={riskDist} />
-        </div>
-      </div>
+
 
       {/* Charts Row 2 */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">

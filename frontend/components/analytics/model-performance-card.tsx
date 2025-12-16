@@ -15,7 +15,7 @@ export function ModelPerformanceCard({
   colorClass = "text-primary",
 }: ModelPerformanceCardProps) {
   return (
-    <Card>
+    <Card className="shadow-sm hover:shadow-md transition-shadow">
       <CardContent className="p-6">
         <div className="flex items-center justify-between">
           <div className="flex-1">

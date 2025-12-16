@@ -101,20 +101,12 @@ export default function DashboardPage() {
             colorClass="text-destructive"
           />
         </div>
-        <div className="md:col-span-1">
+        <div className="md:col-span-2">
           <StatsCard
             title="Fraud Rate"
             value={`${summary?.fraud_rate?.toFixed(2) ?? "0"}%`}
             icon={TrendingUp}
             colorClass="text-warning"
-          />
-        </div>
-        <div className="md:col-span-1">
-          <StatsCard
-            title="Saved"
-            value={formatCurrency(summary?.fraud_amount_blocked ?? 0)}
-            icon={DollarSign}
-            colorClass="text-success"
           />
         </div>
       </div>

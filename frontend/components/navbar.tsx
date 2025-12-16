@@ -50,12 +50,6 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Live Status Indicator */}
-        <div className="hidden md:flex items-center gap-2 mr-4">
-          <Activity className="h-3.5 w-3.5 text-success animate-pulse" />
-          <span className="text-xs font-mono text-muted-foreground">LIVE</span>
-        </div>
-
         {/* Mobile Navigation */}
         <Sheet>
           <SheetTrigger asChild className="md:hidden ml-auto">
