@@ -1,37 +1,31 @@
-# Build stage
-FROM node:18-alpine AS builder
+# ---- Build stage ----
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
+# Copy package files and install dependencies for build
+COPY package.json package-lock.json ./
+RUN npm ci --silent
 
-# Install dependencies using pnpm
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
-
-# Copy application code
+# Copy source and build the Next.js app
 COPY . .
+RUN npm run build
 
-# Build the application
-RUN pnpm run build
 
-# Production stage
-FROM node:18-alpine
+# ---- Production stage ----
+FROM node:20-alpine AS runner
 
 WORKDIR /app
+ENV NODE_ENV=production
 
-# Install pnpm
-RUN npm install -g pnpm
+# Copy only package manifests then install production dependencies
+COPY package.json package-lock.json ./
+RUN npm ci --production --silent --no-audit --no-fund
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-
-# Install production dependencies only
-RUN pnpm install --prod --frozen-lockfile
-
-# Copy built application from builder
+# Copy built assets and public files from builder stage
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/next.config.mjs ./next.config.mjs
 
 # Expose port
 EXPOSE 3000
@@ -40,5 +34,5 @@ EXPOSE 3000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD node -e "require('http').get('http://localhost:3000/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
 
-# Start the application
-CMD ["pnpm", "start"]
+# Start the application (use npm because package.json defines `start`)
+CMD ["npm", "start"]
