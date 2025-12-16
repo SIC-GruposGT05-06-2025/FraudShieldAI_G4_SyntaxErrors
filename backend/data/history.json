@@ -413,6 +413,24 @@
       "timestamp": "2025-12-10T19:32:19.030834",
       "saved_at": "2025-12-10T19:32:19.031268",
       "sequence_number": 23
+    },
+    {
+      "transaction_id": "7e60789f-eb5c-4e1e-b558-69561be578b5",
+      "is_fraud": false,
+      "fraud_probability": 0.0114,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9886,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 1.0
+        }
+      ],
+      "timestamp": "2025-12-16T17:24:21.310019",
+      "saved_at": "2025-12-16T17:24:21.310564",
+      "sequence_number": 24
     }
   ]
 }
