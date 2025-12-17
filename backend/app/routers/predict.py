@@ -40,7 +40,7 @@ def predict_fraud(data: PredictionRequest):
     """Predict fraud probability for a transaction"""
     try:
         score = model.predict(data.dict())
-        fraud = score > 0.5
+        fraud = score >= 0.05
         risk_level = get_risk_level(score)
         
         transaction_id = str(uuid.uuid4())
@@ -82,7 +82,7 @@ def predict_full(data: FullTransactionFeatures):
     try:
         features = data.dict()
         score = model.predict(features)
-        fraud = score > 0.5
+        fraud = score > 0.005
         risk_level = get_risk_level(score)
         
         prediction = {
