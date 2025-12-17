@@ -236,3 +236,21 @@ export async function clearHistory(): Promise<{ message: string }> {
   }
 }
 
+// Chat endpoints
+export async function sendChatMessage(message: string, sessionId?: string) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/chat`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message,
+        session_id: sessionId,
+      }),
+    })
+    if (!response.ok) throw new Error("Failed to send chat message")
+    return await response.json()
+  } catch (error) {
+    console.error("Error sending chat message:", error)
+    throw error
+  }
+}

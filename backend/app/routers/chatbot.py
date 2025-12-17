@@ -101,44 +101,129 @@ def chat(req: ChatRequest):
 
     lower = msg.lower()
 
-    # ayuda
-    if lower in {"help", "ayuda", "menu"}:
+    # Saludos cordiales
+    greetings = {
+        "hola": "¡Hola! 👋 Bienvenido al sistema de detección de fraude. ¿En qué puedo ayudarte?",
+        "buenos días": "¡Buenos días! 🌅 Espero que tengas un excelente día. ¿Necesitas evaluar alguna transacción?",
+        "buenas tardes": "¡Buenas tardes! ☀️ ¿Cómo estás? Estoy listo para ayudarte con el análisis de fraude.",
+        "buenas noches": "¡Buenas noches! 🌙 Gracias por contar conmigo. ¿Hay algo en lo que pueda asistirte?",
+        "hey": "¡Hey! 😊 ¿Qué necesitas hoy?",
+        "hi": "Hi there! 👋 How can I help you with fraud detection?",
+        "hello": "Hello! 🎯 Ready to analyze transactions for fraud?",
+    }
+
+    # Revisar saludos exactos o muy similares
+    for greeting, response in greetings.items():
+        if lower == greeting or (lower.startswith(greeting) and len(lower) <= len(greeting) + 5):
+            return {"session_id": session_id, "reply": response}
+
+    # Respuestas a preguntas específicas PRIMERO (antes de las generales)
+    # IMPORTANTE: Verificar preguntas complejas ANTES de palabras cortas
+    
+    # Preguntas sobre cómo funciona
+    if any(word in lower for word in ["funciona", "funciono", "trabajo", "funcionamiento"]) and any(word in lower for word in ["qué", "que", "cual", "cuál", "como", "cómo"]):
         reply = (
-            "Comandos:\n"
-            "1) 'tx amount=... attempts=... new_device=yes/no hour=.. channel=web/app country=GT'\n"
-            "2) 'estado' para ver la sesión\n"
-            "3) 'reset' para limpiar la sesión\n"
-            "O envíame un JSON de transacción pegado como texto (si tu front lo manda así)."
+            "**¿CÓMO FUNCIONA FRAUDSHIELDAI?**\n\n"
+            "**El Sistema tiene 3 partes principales:**\n\n"
+            "**FRONTEND (La Interfaz)**\n"
+            "   Es lo que ves en la pantalla. Aquí ingresas\n"
+            "   los datos de la transacción que quieres\n"
+            "   verificar (monto, país, hora, etc.)\n\n"
+            "**MODELO AI (La Inteligencia Artificial)**\n"
+            "   Es quien realmente analiza el riesgo.\n"
+            "   Mira 6 factores clave de tu transacción\n"
+            "   y genera un score de riesgo.\n\n"
+            "**LOS 6 FACTORES QUE ANALIZO:**\n"
+            "Cantidad de dinero de la transacción\n"
+            "Número de intentos\n"
+            "**RESULTADO:**\n"
+            "🟢 BAJO RIESGO = Transacción segura\n"
+            "🟡 RIESGO MEDIO = Verificar con OTP\n"
+            "🔴 ALTO RIESGO = Bloquear\n\n"
+            "¿Quieres que analice una transacción?"
+        )
+        return {"session_id": session_id, "reply": reply}
+
+    # Preguntas sobre información del sistema
+    if any(word in lower for word in ["información", "informacion", "info", "detalles", "details"]) and any(word in lower for word in ["qué", "que", "cual", "cuál"]):
+        reply = (
+            "ℹ️ **Información del Sistema:**\n\n"
+            "Soy **FraudShield AI**, un sistema inteligente de detección de fraude.\n\n"
+            "🔍 **Mis Capacidades:**\n"
+            "✓ Análisis en tiempo real de transacciones\n"
+            "✓ Evaluación de riesgo automática\n"
+            "✓ Recomendaciones de acción (Bloquear/Revisar/Aprobar)\n"
+            "✓ Historial de sesión\n"
+            "✓ Soporte en español e inglés\n\n"
+            "🛡️ **Objetivo:**\n"
+            "Proteger transacciones de comercio electrónico identificando patrones sospechosos y reduciendo pérdidas por fraude.\n\n"
+            "¿Necesitas ayuda con algo específico?"
+        )
+        return {"session_id": session_id, "reply": reply}
+
+    # Preguntas generales (menos específicas)
+    if any(word in lower for word in ["como estás", "cómo estás", "qué tal", "como vas", "cómo vas"]):
+        reply = "¡Estoy funcionando perfectamente! 😊 Listo para analizar transacciones y detectar fraudes. ¿Tienes algo en mente?"
+        return {"session_id": session_id, "reply": reply}
+
+    if any(word in lower for word in ["gracias", "thanks", "thank you"]):
+        reply = "¡De nada! 🙌 Es un placer asistirte. ¿Necesitas algo más?"
+        return {"session_id": session_id, "reply": reply}
+
+    if any(word in lower for word in ["adiós", "adios", "bye", "hasta luego", "chao"]):
+        reply = "¡Hasta pronto! 👋 Que tengas un excelente día. No dudes en volver si necesitas más análisis."
+        return {"session_id": session_id, "reply": reply}
+
+    # ayuda
+    if lower in {"help", "ayuda", "menu", "menú"}:
+        reply = (
+            "📋 **Comandos disponibles:**\n\n"
+            "1️⃣ **Analizar Transacción:**\n"
+            "   `tx amount=3500 attempts=7 new_device=yes hour=2 channel=web country=GT`\n\n"
+            "2️⃣ **Ver Sesión:**\n"
+            "   `estado`\n\n"
+            "3️⃣ **Limpiar Sesión:**\n"
+            "   `reset`\n\n"
+            "💬 También puedo responder preguntas sobre fraude de manera natural."
         )
         return {"session_id": session_id, "reply": reply}
 
     if lower == "reset":
         SESSIONS[session_id] = {"history": []}
-        return {"session_id": session_id, "reply": "Sesión reiniciada."}
+        return {"session_id": session_id, "reply": "✅ Sesión reiniciada. ¡Comenzamos de nuevo!"}
 
     if lower == "estado":
-        return {"session_id": session_id, "history": state["history"][-10:]}
+        history_str = "\n".join([f"- {h.get('user', '')}" for h in state["history"][-5:]])
+        return {"session_id": session_id, "reply": f"📊 **Últimos 5 mensajes de tu sesión:**\n{history_str}"}
 
     # intento de transacción desde texto
     tx = try_extract_tx_from_text(msg)
     if tx:
         result = compute_risk(tx)
         reply = (
-            f"Analicé la transacción.\n"
-            f"Score: {result['risk_score']}/100\n"
-            f"Decisión: {result['decision']}\n"
-            f"Recomendación: {result['advice']}"
+            f"🔍 **Análisis de Transacción**\n\n"
+            f"📊 Score de Riesgo: **{result['risk_score']}/100**\n"
+            f"🎯 Decisión: **{result['decision']}**\n"
+            f"💡 Recomendación: {result['advice']}"
         )
         return {"session_id": session_id, "tx": tx, "result": result, "reply": reply}
 
-    # conversación simple
-    if "fraude" in lower:
+    # conversación sobre fraude
+    if any(word in lower for word in ["fraude", "fraud", "sospechosa", "suspicious", "riesgo", "risk", "seguridad", "security"]):
         reply = (
-            "Puedo ayudarte a evaluar riesgo. "
-            "Escribe 'help' para ver el formato o envía una transacción con: "
-            "tx amount=950 attempts=3 new_device=yes hour=22 channel=web country=GT"
+            "🛡️ ¡Excelente pregunta! Puedo ayudarte a evaluar el riesgo de fraude.\n\n"
+            "Envíame los datos de una transacción con este formato:\n"
+            "`tx amount=950 attempts=3 new_device=yes hour=22 channel=web country=GT`\n\n"
+            "O escribe 'help' para ver todos los comandos. 📚"
         )
         return {"session_id": session_id, "reply": reply}
 
-    reply = "No entendí del todo. Escribe 'help' o envía una transacción con el comando 'tx ...'."
+    # Default: mensaje amigable que pida clarificación
+    reply = (
+        "🤔 No estoy seguro de lo que preguntaste.\n\n"
+        "Puedo ayudarte con:\n"
+        "✅ Analizar transacciones para detectar fraude\n"
+        "✅ Responder preguntas sobre seguridad\n\n"
+        "Escribe 'help' para ver los comandos o envía una transacción para analizar. 📊"
+    )
     return {"session_id": session_id, "reply": reply}

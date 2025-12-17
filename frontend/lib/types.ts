@@ -114,3 +114,23 @@ export interface ModelInfo {
   recall: number
   f1_score: number
 }
+export interface ChatMessage {
+  user: string
+}
+
+export interface ChatRequest {
+  message: string
+  session_id?: string
+}
+
+export interface ChatResponse {
+  session_id: string
+  reply: string
+  tx?: Record<string, any>
+  result?: {
+    risk_score: number
+    decision: string
+    advice: string
+  }
+  history?: ChatMessage[]
+}
