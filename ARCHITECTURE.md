@@ -371,8 +371,4 @@ Both containers in same Docker network (fraudshield-network)
 Can communicate using container names as hostnames
 ```
 
----
 
-Esta arquitectura proporciona una base sólida, escalable y bien documentada para FraudShieldAI.
-
-Otra modificacion
