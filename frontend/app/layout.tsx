@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from "@/components/navbar"
+import { ChatWidget } from "@/components/chatbot/chat-widget"
 import { AuthProvider } from "@/lib/auth-context"
 import { AuthGuard } from "@/components/auth-guard"
 import "./globals.css"
@@ -45,6 +46,7 @@ export default function RootLayout({
           <AuthGuard>
             <Navbar />
             <main className="min-h-[calc(100vh-4rem)]">{children}</main>
+            <ChatWidget />
           </AuthGuard>
         </AuthProvider>
         <Analytics />

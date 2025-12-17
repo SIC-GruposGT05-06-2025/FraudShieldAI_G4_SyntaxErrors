@@ -2,6 +2,12 @@ import os
 import joblib
 import pandas as pd
 
+logger = logging.getLogger(__name__)
+if not logger.handlers:
+    # Basic configuration for simple debugging in local/dev
+    logging.basicConfig(level=logging.INFO)
+
+
 class FraudDetector:
     def __init__(self):
         base_path = os.path.dirname(os.path.abspath(__file__))

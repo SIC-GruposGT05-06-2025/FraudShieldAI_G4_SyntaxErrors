@@ -26,11 +26,11 @@ def get_history_mgr():
 
 def get_risk_level(score: float) -> str:
     """Determine risk level based on fraud score"""
-    if score < 0.25:
+    if score < 0.2:
         return "LOW"
-    elif score < 0.5:
+    elif score < 0.4:
         return "MEDIUM"
-    elif score < 0.75:
+    elif score < 0.6:
         return "HIGH"
     else:
         return "CRITICAL"
@@ -86,10 +86,10 @@ def predict_full(data: FullTransactionFeatures):
         risk_level = get_risk_level(score)
         
         prediction = {
-            "transaction_id": str(uuid.uuid4()),
+            "transaction_id": transaction_id,
             "is_fraud": fraud,
             "fraud_probability": float(score),
-            "risk_score": int(score * 100),
+            "risk_score": score,
             "risk_level": risk_level,
             "confidence": max(score, 1 - score),
             "factors": [

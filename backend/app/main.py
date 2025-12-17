@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import transactions, predict
+from app.routers import chatbot
 import os
 
 app = FastAPI(
@@ -21,6 +22,8 @@ app.add_middleware(
 
 app.include_router(transactions.router, prefix="/api/v1/transactions", tags=["Transactions"])
 app.include_router(predict.router, prefix="/api/v1/predict", tags=["Fraud Detection"])
+app.include_router(chatbot.router, prefix="/api/v1", tags=["Chatbot"])
+
 
 @app.get("/")
 def root():
