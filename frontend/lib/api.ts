@@ -205,7 +205,19 @@ export async function getRiskDistribution(): Promise<RiskDistribution[]> {
 export async function getModelInfo(): Promise<ModelInfo> {
   try {
     const response = await fetch(`${API_BASE_URL}/model/info`)
-    return await response.json()
+    const result = await response.json()
+
+    const toNumber = (v: any, fallback: number) => {
+      const n = Number(v)
+      return Number.isFinite(n) ? n : fallback
+    }
+
+    return {
+      accuracy: toNumber(result.accuracy ?? result.accuracy_score ?? result.acc, mockModelInfo.accuracy),
+      precision: toNumber(result.precision ?? result.precision_score ?? result.prec, mockModelInfo.precision),
+      recall: toNumber(result.recall ?? result.recall_score ?? result.rec, mockModelInfo.recall),
+      f1_score: toNumber(result.f1_score ?? result.f1score ?? result.f1, mockModelInfo.f1_score),
+    }
   } catch (error) {
     return mockModelInfo
   }

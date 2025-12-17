@@ -28,9 +28,30 @@ export default function DashboardPage() {
         ])
         console.log('Dashboard data:', { summaryData, trendsData, riskDistData, txData })
         setSummary(summaryData)
-        setTrends(trendsData)
-        setRiskDist(riskDistData)
-        setTransactionsData(txData)
+        
+        setTrends(Array.isArray(trendsData) ? trendsData : trendsData?.data ?? [])
+        if (Array.isArray(riskDistData)) {
+          setRiskDist(riskDistData)
+        } else if (Array.isArray(riskDistData?.data)) {
+          setRiskDist(riskDistData.data)
+        } else if (riskDistData?.risk_distribution) {
+          // convert from counting object to array
+          const rd = riskDistData.risk_distribution
+          const total = Object.values(rd).reduce((s: number, v: any) => s + (Number(v) || 0), 0)
+          setRiskDist([
+            { risk_level: "LOW", count: rd.LOW || 0, percentage: total > 0 ? ((rd.LOW || 0) / total) * 100 : 0 },
+            { risk_level: "MEDIUM", count: rd.MEDIUM || 0, percentage: total > 0 ? ((rd.MEDIUM || 0) / total) * 100 : 0 },
+            { risk_level: "HIGH", count: rd.HIGH || 0, percentage: total > 0 ? ((rd.HIGH || 0) / total) * 100 : 0 },
+            { risk_level: "CRITICAL", count: rd.CRITICAL || 0, percentage: total > 0 ? ((rd.CRITICAL || 0) / total) * 100 : 0 },
+          ])
+        } else {
+          setRiskDist([])
+        }
+
+        // transactions: accept either the wrapper or direct array
+        if (txData?.transactions) setTransactionsData(txData)
+        else if (Array.isArray(txData)) setTransactionsData({ transactions: txData, total: txData.length, page: 1, totalPages: 1 })
+        else setTransactionsData(null)
       } catch (error) {
         console.error("Error loading dashboard:", error)
       } finally {
@@ -87,17 +108,17 @@ export default function DashboardPage() {
       {/* Asymmetric Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6 mb-8">
         <div className="md:col-span-2">
-          <StatsCard
-            title="Total Transactions"
-            value={summary?.totalTransactions?.toLocaleString() ?? "0"}
-            icon={Activity}
-            colorClass="text-primary"
-          />
+            <StatsCard
+              title="Total Transactions"
+              value={summary?.total_transactions?.toLocaleString() ?? "0"}
+              icon={Activity}
+              colorClass="text-primary"
+            />
         </div>
         <div className="md:col-span-2">
           <StatsCard
             title="Fraud Detected"
-            value={summary?.fraudDetected?.toLocaleString() ?? "0"}
+            value={summary?.fraud_detected?.toLocaleString() ?? "0"}
             icon={AlertTriangle}
             colorClass="text-destructive"
           />
@@ -105,7 +126,7 @@ export default function DashboardPage() {
         <div className="md:col-span-2">
           <StatsCard
             title="Fraud Rate"
-            value={`${((summary?.fraudDetected || 0) / (summary?.totalTransactions || 1) * 100).toFixed(2)}%`}
+            value={`${(((summary?.fraud_detected || 0) / (summary?.total_transactions || 1)) * 100).toFixed(2)}%`}
             icon={TrendingUp}
             colorClass="text-warning"
           />
