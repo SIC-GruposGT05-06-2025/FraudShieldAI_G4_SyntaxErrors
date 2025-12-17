@@ -6,9 +6,13 @@ import pandas as pd
 from datetime import datetime
 from typing import Optional
 import uuid
+import json
+from pathlib import Path
 
 router = APIRouter()
 model = FraudDetector()
+
+# No need for separate transactions file - use history manager only
 
 # Lazy initialization of history manager
 _history_manager = None
@@ -39,8 +43,12 @@ def predict_fraud(data: PredictionRequest):
         fraud = score >= 0.05
         risk_level = get_risk_level(score)
         
+        transaction_id = str(uuid.uuid4())
+        timestamp = datetime.now().isoformat()
+        
         prediction = {
-            "transaction_id": str(uuid.uuid4()),
+            "transaction_id": transaction_id,
+            "id": transaction_id,
             "is_fraud": fraud,
             "fraud_probability": float(score),
             "risk_score": int(score * 100),
@@ -48,15 +56,19 @@ def predict_fraud(data: PredictionRequest):
             "confidence": max(score, 1 - score),
             "factors": [
                 {"feature": "Amount", "impact": "High", "value": data.amount},
+                {"feature": "Time", "impact": "Medium", "value": data.time},
             ],
-            "timestamp": datetime.now().isoformat(),
+            "timestamp": timestamp,
+            "amount": data.amount,
+            "merchant": "Online",
+            "location": "N/A",
+            "card_type": "Unknown"
         }
         
-        # Save to history
+        # Save to history manager (which saves to history.json)
         try:
             get_history_mgr().add_prediction(prediction)
         except Exception as e:
-            # Log error but don't fail the prediction
             print(f"Warning: Could not save prediction to history: {e}")
         
         return prediction

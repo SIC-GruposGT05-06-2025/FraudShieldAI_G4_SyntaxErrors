@@ -26,6 +26,7 @@ export default function DashboardPage() {
           getRiskDistribution(),
           getTransactions(1, 20),
         ])
+        console.log('Dashboard data:', { summaryData, trendsData, riskDistData, txData })
         setSummary(summaryData)
         setTrends(trendsData)
         setRiskDist(riskDistData)
@@ -88,7 +89,7 @@ export default function DashboardPage() {
         <div className="md:col-span-2">
           <StatsCard
             title="Total Transactions"
-            value={summary?.total_transactions?.toLocaleString() ?? "0"}
+            value={summary?.totalTransactions?.toLocaleString() ?? "0"}
             icon={Activity}
             colorClass="text-primary"
           />
@@ -96,7 +97,7 @@ export default function DashboardPage() {
         <div className="md:col-span-2">
           <StatsCard
             title="Fraud Detected"
-            value={summary?.fraud_detected?.toLocaleString() ?? "0"}
+            value={summary?.fraudDetected?.toLocaleString() ?? "0"}
             icon={AlertTriangle}
             colorClass="text-destructive"
           />
@@ -104,7 +105,7 @@ export default function DashboardPage() {
         <div className="md:col-span-2">
           <StatsCard
             title="Fraud Rate"
-            value={`${summary?.fraud_rate?.toFixed(2) ?? "0"}%`}
+            value={`${((summary?.fraudDetected || 0) / (summary?.totalTransactions || 1) * 100).toFixed(2)}%`}
             icon={TrendingUp}
             colorClass="text-warning"
           />
@@ -122,7 +123,7 @@ export default function DashboardPage() {
       </div>
 
       {/* Recent Transactions */}
-      <RecentTransactionsTable transactions={transactionsData?.data || []} />
+      <RecentTransactionsTable transactions={transactionsData?.transactions || []} />
     </div>
   )
 }

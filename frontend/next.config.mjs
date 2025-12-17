@@ -6,7 +6,12 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  devIndicators: false
+  devIndicators: false,
+  turbopack: {},
+  webpack: (config) => {
+    config.resolve.alias['@'] = require('path').resolve(__dirname)
+    return config
+  }
 }
 
 export default nextConfig

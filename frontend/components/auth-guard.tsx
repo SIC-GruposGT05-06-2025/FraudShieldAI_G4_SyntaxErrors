@@ -15,26 +15,31 @@ export function AuthGuard({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         // Allow auth pages without authentication
         if (pathname?.startsWith("/auth")) {
-        return
+            return
         }
 
         // Redirect to login if not authenticated
         if (!isLoading && !user) {
-        router.push("/auth/login")
+            router.push("/auth/login")
         }
     }, [user, isLoading, router, pathname])
 
     // Show loading while checking auth
     if (isLoading) {
         return (
-        <div className="flex items-center justify-center min-h-screen">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        </div>
+            <div className="flex items-center justify-center min-h-screen">
+                <Loader2 className="h-8 w-8 animate-spin text-primary" />
+            </div>
         )
     }
 
+    // Allow auth pages to render without authentication
+    if (pathname?.startsWith("/auth")) {
+        return <>{children}</>
+    }
+
     // Don't render protected content if not authenticated
-    if (!user && !pathname?.startsWith("/auth")) {
+    if (!user) {
         return null
     }
 
