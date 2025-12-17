@@ -10,6 +10,21 @@ import { getRiskColor } from "@/lib/utils-risk"
 import { useState } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
+function formatRiskScore(value?: number | null) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "0"
+
+  // Project spec: `risk_score` is 0-100. If a fractional value <= 1 is provided,
+  // assume it's a 0-1 probability and convert to percentage. Then clamp to [0,100].
+  let percent = value
+  if (percent <= 1) percent = percent * 100
+
+  if (!Number.isFinite(percent)) return "0"
+  if (percent < 0) percent = 0
+  if (percent > 100) percent = 100
+
+  return percent.toFixed(2)
+}
+
 interface ResultCardProps {
   result: PredictionResponse
   onCheckAnother: () => void
@@ -109,7 +124,7 @@ export function ResultCard({ result, onCheckAnother }: ResultCardProps) {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Risk Score</p>
-                <p className="text-lg font-semibold tabular-nums">{result.risk_score ? (result.risk_score * 100).toFixed(2) : "0"}%</p>
+                <p className="text-lg font-semibold tabular-nums">{formatRiskScore(result.risk_score)}%</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Confidence</p>

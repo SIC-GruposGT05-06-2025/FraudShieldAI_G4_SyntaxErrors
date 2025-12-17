@@ -1,8 +1,6 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
+import React, { useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -21,6 +19,7 @@ export function TransactionForm({ onSubmit, isLoading }: TransactionFormProps) {
   const [time, setTime] = useState("")
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [vFeatures, setVFeatures] = useState<Record<string, string>>({})
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -62,6 +61,62 @@ export function TransactionForm({ onSubmit, isLoading }: TransactionFormProps) {
     }
     setVFeatures(newVFeatures)
     setShowAdvanced(true)
+  }
+
+  const populateFromJson = (obj: any) => {
+    if (!obj) return
+
+    if (obj.amount !== undefined && obj.amount !== null) {
+      setAmount(String(obj.amount))
+    }
+    if (obj.time !== undefined && obj.time !== null) {
+      setTime(String(obj.time))
+    }
+
+    const newVFeatures: Record<string, string> = {}
+    for (let i = 1; i <= 28; i++) {
+      const lower = `v${i}`
+      const upper = `V${i}`
+      const val = obj[lower] ?? obj[upper]
+      if (val !== undefined && val !== null && val !== "") {
+        newVFeatures[lower] = String(val)
+      }
+    }
+
+    if (Object.keys(newVFeatures).length > 0) {
+      setVFeatures(newVFeatures)
+      setShowAdvanced(true)
+    }
+  }
+
+  const handleFileClick = () => fileInputRef.current?.click()
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      const text = await file.text()
+      const parsed = JSON.parse(text)
+      populateFromJson(parsed)
+    } catch (err) {
+      console.error(err)
+      alert("Invalid JSON file. Please provide a valid transaction JSON.")
+    } finally {
+      // reset input so same file can be re-selected later
+      if (fileInputRef.current) fileInputRef.current.value = ""
+    }
+  }
+
+  const handlePasteJson = () => {
+    const pasted = window.prompt("Paste transaction JSON:")
+    if (!pasted) return
+    try {
+      const parsed = JSON.parse(pasted)
+      populateFromJson(parsed)
+    } catch (err) {
+      console.error(err)
+      alert("Invalid JSON. Please paste a valid transaction JSON.")
+    }
   }
 
   return (
@@ -144,15 +199,30 @@ export function TransactionForm({ onSubmit, isLoading }: TransactionFormProps) {
               )}
             </Button>
 
-            <div className="grid grid-cols-2 gap-2">
-              <Button type="button" variant="outline" onClick={() => generateSampleData(false)} disabled={isLoading}>
-                <Dices className="mr-2 h-4 w-4" />
-                Sample Safe
-              </Button>
-              <Button type="button" variant="outline" onClick={() => generateSampleData(true)} disabled={isLoading}>
-                <Dices className="mr-2 h-4 w-4" />
-                Sample Fraud
-              </Button>
+            <div>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                <Button type="button" variant="outline" onClick={() => generateSampleData(false)} disabled={isLoading} className="w-full">
+                  <Dices className="mr-2 h-4 w-4" />
+                  Sample Safe
+                </Button>
+                <Button type="button" variant="outline" onClick={() => generateSampleData(true)} disabled={isLoading} className="w-full">
+                  <Dices className="mr-2 h-4 w-4" />
+                  Sample Fraud
+                </Button>
+                <Button type="button" variant="outline" onClick={handleFileClick} disabled={isLoading} className="w-full">
+                  Upload JSON
+                </Button>
+                <Button type="button" variant="outline" onClick={handlePasteJson} disabled={isLoading} className="w-full">
+                  Paste JSON
+                </Button>
+              </div>
             </div>
           </div>
         </form>
