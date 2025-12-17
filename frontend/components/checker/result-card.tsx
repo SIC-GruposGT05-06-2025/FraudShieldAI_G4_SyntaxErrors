@@ -26,7 +26,7 @@ export function ResultCard({ result, onCheckAnother }: ResultCardProps) {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <RiskGauge riskScore={result.risk_score} riskLevel={result.risk_level} />
+            <RiskGauge riskScore={result.fraud_probability} riskLevel={result.risk_level} />
 
             <div className="flex-1 space-y-4">
               <div className="text-center md:text-left">
@@ -109,7 +109,7 @@ export function ResultCard({ result, onCheckAnother }: ResultCardProps) {
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Risk Score</p>
-                <p className="text-lg font-semibold tabular-nums">{result.risk_score ?? 0}/100</p>
+                <p className="text-lg font-semibold tabular-nums">{result.risk_score ? (result.risk_score * 100).toFixed(2) : "0"}%</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Confidence</p>

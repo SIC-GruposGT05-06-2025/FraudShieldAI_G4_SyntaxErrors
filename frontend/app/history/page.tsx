@@ -24,7 +24,7 @@ export default function HistoryPage() {
     const fetchTransactions = async () => {
       setIsLoading(true)
       try {
-        const response = await getTransactions(currentPage, itemsPerPage, filters.riskLevel, filters.isFraud)
+        const response = await getTransactions(currentPage, itemsPerPage, filters)
         console.log('History response:', response)
         setTransactions(response.transactions)
         setTotalPages(Math.ceil(response.total / itemsPerPage))
