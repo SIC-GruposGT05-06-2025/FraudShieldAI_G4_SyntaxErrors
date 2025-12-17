@@ -431,6 +431,348 @@
       "timestamp": "2025-12-16T17:24:21.310019",
       "saved_at": "2025-12-16T17:24:21.310564",
       "sequence_number": 24
+    },
+    {
+      "transaction_id": "8476e556-fe90-47de-96cf-c0d350ae269b",
+      "is_fraud": false,
+      "fraud_probability": 0.0107,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9893,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2859.56
+        }
+      ],
+      "timestamp": "2025-12-17T10:12:49.212168",
+      "saved_at": "2025-12-17T10:12:49.219178",
+      "sequence_number": 25
+    },
+    {
+      "transaction_id": "ed471b12-e377-4c05-b34b-fecfcdbe74de",
+      "is_fraud": false,
+      "fraud_probability": 0.0118,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9882,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 120.5
+        }
+      ],
+      "timestamp": "2025-12-17T10:13:59.622092",
+      "saved_at": "2025-12-17T10:13:59.634107",
+      "sequence_number": 26
+    },
+    {
+      "transaction_id": "4bc694bf-95e9-4442-b498-40ee93d6fee5",
+      "is_fraud": false,
+      "fraud_probability": 0.0107,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9893,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 900.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:14:15.941532",
+      "saved_at": "2025-12-17T10:14:15.955041",
+      "sequence_number": 27
+    },
+    {
+      "transaction_id": "b447c367-5a85-4d2e-862c-df4d7252f465",
+      "is_fraud": false,
+      "fraud_probability": 0.0149,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9851,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 1800.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:15:43.529861",
+      "saved_at": "2025-12-17T10:15:43.540541",
+      "sequence_number": 28
+    },
+    {
+      "transaction_id": "37bfafc5-3021-4b38-8034-870eaa92f210",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 1800.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:23:33.278550",
+      "saved_at": "2025-12-17T10:23:33.289061",
+      "sequence_number": 29
+    },
+    {
+      "transaction_id": "c62a61b9-7fab-41b2-81de-15dd8f3de632",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2200.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:24:23.301902",
+      "saved_at": "2025-12-17T10:24:23.317420",
+      "sequence_number": 30
+    },
+    {
+      "transaction_id": "d93a4e85-2b63-4825-9232-c932eb6b164e",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:31:59.691118",
+      "saved_at": "2025-12-17T10:31:59.692118",
+      "sequence_number": 31
+    },
+    {
+      "transaction_id": "40ffd26d-51db-4a29-bcb5-b85043afdb29",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:39:07.856362",
+      "saved_at": "2025-12-17T10:39:07.856862",
+      "sequence_number": 32
+    },
+    {
+      "transaction_id": "3142c96f-f192-4093-a551-f274c7e01d1f",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:39:22.169830",
+      "saved_at": "2025-12-17T10:39:22.181843",
+      "sequence_number": 33
+    },
+    {
+      "transaction_id": "53708ee2-fc96-4d6e-83fa-43fa953869a4",
+      "is_fraud": false,
+      "fraud_probability": 0.0,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 1.0,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:44:44.989061",
+      "saved_at": "2025-12-17T10:44:45.002090",
+      "sequence_number": 34
+    },
+    {
+      "transaction_id": "def53a01-51e6-46d3-956f-c22c469a747f",
+      "is_fraud": false,
+      "fraud_probability": 0.0205,
+      "risk_score": 2,
+      "risk_level": "LOW",
+      "confidence": 0.9795,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:48:37.404877",
+      "saved_at": "2025-12-17T10:48:37.418388",
+      "sequence_number": 35
+    },
+    {
+      "transaction_id": "2e9693b1-3b4c-44d2-8433-41e188910305",
+      "is_fraud": false,
+      "fraud_probability": 0.0044,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9956,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:54:10.648010",
+      "saved_at": "2025-12-17T10:54:10.648510",
+      "sequence_number": 36
+    },
+    {
+      "transaction_id": "796d45d6-a7bf-45fe-ab45-27dd50ae27d1",
+      "is_fraud": false,
+      "fraud_probability": 0.0044,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9956,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:54:42.318670",
+      "saved_at": "2025-12-17T10:54:42.329180",
+      "sequence_number": 37
+    },
+    {
+      "transaction_id": "4cc7fb5e-34e7-4404-a7d6-7ac58449f52e",
+      "is_fraud": false,
+      "fraud_probability": 0.005,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.995,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2100.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:56:42.907247",
+      "saved_at": "2025-12-17T10:56:42.919251",
+      "sequence_number": 38
+    },
+    {
+      "transaction_id": "afd3156e-f421-4f92-a9dc-d067fbca411e",
+      "is_fraud": false,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:57:54.228586",
+      "saved_at": "2025-12-17T10:57:54.239091",
+      "sequence_number": 39
+    },
+    {
+      "transaction_id": "55db40de-67e4-4050-982f-c666063e2b7c",
+      "is_fraud": false,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.0
+        }
+      ],
+      "timestamp": "2025-12-17T10:59:40.073187",
+      "saved_at": "2025-12-17T10:59:40.084190",
+      "sequence_number": 40
+    },
+    {
+      "transaction_id": "07ed3b8e-79e0-4edb-9052-9ee1e94915ce",
+      "is_fraud": false,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.0
+        }
+      ],
+      "timestamp": "2025-12-17T11:00:01.590322",
+      "saved_at": "2025-12-17T11:00:01.603842",
+      "sequence_number": 41
+    },
+    {
+      "transaction_id": "e1ae22a5-0910-48ff-af03-86dd19e33299",
+      "is_fraud": true,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.0
+        }
+      ],
+      "timestamp": "2025-12-17T11:00:05.520622",
+      "saved_at": "2025-12-17T11:00:05.532636",
+      "sequence_number": 42
+    },
+    {
+      "transaction_id": "26f136a5-17f4-4882-b9bf-d25ddf35d0d1",
+      "is_fraud": true,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.0
+        }
+      ],
+      "timestamp": "2025-12-17T11:00:16.447298",
+      "saved_at": "2025-12-17T11:00:16.460301",
+      "sequence_number": 43
     }
   ]
 }
