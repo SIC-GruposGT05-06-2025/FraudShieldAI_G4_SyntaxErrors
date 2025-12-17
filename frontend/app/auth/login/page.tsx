@@ -2,8 +2,9 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -13,8 +14,16 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Loader2, AlertCircle, Mail, Lock } from "lucide-react"
 
 export default function LoginPage() {
-  const { login, isLoading: authLoading } = useAuth()
+  const { login, isLoading: authLoading, user } = useAuth()
+  const router = useRouter()
   const [email, setEmail] = useState("")
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user && !authLoading) {
+      router.push("/")
+    }
+  }, [user, authLoading, router])
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -35,8 +44,10 @@ export default function LoginPage() {
     if (!result.success) {
       setError(result.message || "Login failed")
       setIsSubmitting(false)
+    } else {
+      // Redirect to dashboard on successful login
+      router.push("/")
     }
-    // On success, login will redirect, so no need to setIsSubmitting(false)
   }
 
   if (authLoading && !isSubmitting) {

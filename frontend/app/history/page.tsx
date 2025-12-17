@@ -24,9 +24,10 @@ export default function HistoryPage() {
     const fetchTransactions = async () => {
       setIsLoading(true)
       try {
-        const response = await getTransactions(currentPage, itemsPerPage, filters)
-        setTransactions(response.data)
-        setTotalPages(response.totalPages)
+        const response = await getTransactions(currentPage, itemsPerPage, filters.riskLevel, filters.isFraud)
+        console.log('History response:', response)
+        setTransactions(response.transactions)
+        setTotalPages(Math.ceil(response.total / itemsPerPage))
         setTotalItems(response.total)
       } catch (error) {
         console.error("Error fetching transactions:", error)
