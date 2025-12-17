@@ -107,6 +107,8 @@ class HistoryManager:
         
         # Validate page number
         page = max(1, min(page, max(1, total_pages)))
+
+        print(page)
         
         start_idx = (page - 1) * items_per_page
         end_idx = start_idx + items_per_page

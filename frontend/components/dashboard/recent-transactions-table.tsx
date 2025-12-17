@@ -82,9 +82,9 @@ export function RecentTransactionsTable({ transactions }: RecentTransactionsTabl
               </tr>
             </thead>
             <tbody>
-              {transactions.slice(0, 10).map((transaction) => (
+              {transactions.slice(0, 10).map((transaction, index) => (
                 <tr
-                  key={transaction.id}
+                  key={`${transaction.id}-${index}`}
                   className="border-b border-border/30 hover:bg-accent/30 transition-colors group"
                 >
                   <td className="py-4 px-4">
