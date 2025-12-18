@@ -2883,6 +2883,34 @@
       "card_type": "Unknown",
       "saved_at": "2025-12-18T13:29:00.706817",
       "sequence_number": 103
+    },
+    {
+      "transaction_id": "cc799b09-fbea-45bd-a49a-05af94937c8d",
+      "id": "cc799b09-fbea-45bd-a49a-05af94937c8d",
+      "is_fraud": false,
+      "fraud_probability": 0.0058,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9942,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 7410.0
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 30.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:46:22.417067",
+      "amount": 7410.0,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:46:22.419139",
+      "sequence_number": 104
     }
   ]
 }
