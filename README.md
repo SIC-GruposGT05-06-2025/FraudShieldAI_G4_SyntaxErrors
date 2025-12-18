@@ -411,7 +411,7 @@ python backend/app/ml/train_model.py
 [![GitHub forks](https://img.shields.io/github/forks/tu-usuario/fraudshield-ai?style=social)](https://github.com/tu-usuario/fraudshield-ai/network/members)
 [![GitHub issues](https://img.shields.io/github/issues/tu-usuario/fraudshield-ai)](https://github.com/tu-usuario/fraudshield-ai/issues)
 
-*Construido con ❤️ por el equipo de FraudShield AI*
+*Construido por SyntaxErrors*
 
 </div>
 ```
