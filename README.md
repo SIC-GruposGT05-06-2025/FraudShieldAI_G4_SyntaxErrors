@@ -187,15 +187,6 @@ npm run dev
 pnpm dev
 ```
 
-### **Verificación de Funcionamiento**
-
-Una vez iniciado, verifica que todo funcione correctamente:
-
-- **Backend API**: http://localhost:8000
-- **Documentación Swagger**: http://localhost:8000/docs
-- **Frontend**: http://localhost:3000
-- **Health Check**: http://localhost:8000/health
-
 ---
 
 ## 📚 Documentación de la API
@@ -314,16 +305,16 @@ FraudShieldAI/
 ## 📸 Screenshots
 
 ### Dashboard Principal
-![Dashboard](./docs/images/dashboard.png)
+![Dashboard](./docs/images/Dashboard.png)
 
 ### Verificador de Transacciones
-![Transaction Checker](./docs/images/transactionchecker.png)
+![Transaction Checker](./docs/images/TransactionChecker.png)
 
 ### Analytics y Métricas
 ![Analytics](./docs/images/analytics.png)
 
 ### Historial de Transacciones
-![History](./docs/images/history.png)
+![History](./docs/images/History.png)
 
 ---
 
@@ -409,21 +400,6 @@ ls -la backend/app/ml/model.joblib
 # Re-entrenar si es necesario
 python backend/app/ml/train_model.py
 ```
-
----
-
-## 🤝 Soporte
-
-### **Documentación Adicional**
-- 📖 [Guía de Inicio Rápido](docs/QUICK_START.md)
-- 🏗️ [Documentación de Arquitectura](ARCHITECTURE.md)
-- 🔧 [Guía de Configuración](docs/CONFIGURATION.md)
-- 📚 [Referencia de API](docs/API_REFERENCE.md)
-
-### **Contacto**
-- 📧 Email: support@fraudshieldai.com
-- 💬 Discord: [FraudShield Community](https://discord.gg/fraudshield)
-- 📱 Issues: [GitHub Issues](https://github.com/tu-usuario/fraudshield-ai/issues)
 
 ---
 
