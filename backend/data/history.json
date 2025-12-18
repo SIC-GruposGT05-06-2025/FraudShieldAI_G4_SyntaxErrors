@@ -2603,6 +2603,90 @@
       "card_type": "Unknown",
       "saved_at": "2025-12-17T16:10:03.032804",
       "sequence_number": 93
+    },
+    {
+      "transaction_id": "b243f17d-ed19-4911-9955-0ea2ecc1c389",
+      "id": "b243f17d-ed19-4911-9955-0ea2ecc1c389",
+      "is_fraud": true,
+      "fraud_probability": 0.8719,
+      "risk_score": 87,
+      "risk_level": "CRITICAL",
+      "confidence": 0.8719,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 25000.0
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 1.0
+        }
+      ],
+      "timestamp": "2025-12-18T11:36:04.157523",
+      "amount": 25000.0,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T11:36:04.158222",
+      "sequence_number": 94
+    },
+    {
+      "transaction_id": "4996ee11-e2ce-435b-a050-bc7695deede6",
+      "id": "4996ee11-e2ce-435b-a050-bc7695deede6",
+      "is_fraud": false,
+      "fraud_probability": 0.0069,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9931,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 189.41
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 4559.0
+        }
+      ],
+      "timestamp": "2025-12-18T11:36:21.609280",
+      "amount": 189.41,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T11:36:21.610489",
+      "sequence_number": 95
+    },
+    {
+      "transaction_id": "3093002a-dd20-490d-b432-8fa66674ffee",
+      "id": "3093002a-dd20-490d-b432-8fa66674ffee",
+      "is_fraud": true,
+      "fraud_probability": 0.8719,
+      "risk_score": 87,
+      "risk_level": "CRITICAL",
+      "confidence": 0.8719,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 27000.0
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 1.0
+        }
+      ],
+      "timestamp": "2025-12-18T11:36:51.099042",
+      "amount": 27000.0,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T11:36:51.099800",
+      "sequence_number": 96
     }
   ]
 }

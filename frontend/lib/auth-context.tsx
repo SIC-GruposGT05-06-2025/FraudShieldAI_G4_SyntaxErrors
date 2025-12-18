@@ -13,6 +13,7 @@ interface AuthContextType {
     login: (email: string, password: string) => Promise<{ success: boolean; message?: string }>
     signup: (email: string, password: string, name: string) => Promise<{ success: boolean; message?: string }>
     logout: () => void
+    faceLogin: () => Promise<{ success: boolean; message?: string }>
     }
 
     const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -72,6 +73,29 @@ interface AuthContextType {
         return { success: false, message: response.message }
     }
 
+    const faceLogin = async () => {
+        setIsLoading(true)
+        // Mock response for demo purposes (in real app, call backend with face descriptor)
+        const response = {
+            success: true,
+            user: { id: "face-1", email: "face@example.com", name: "Face User" } as Omit<User, "password">,
+            token: "mock-face-token"
+        }
+
+        if (response.success && response.user && response.token) {
+            setUser(response.user)
+            setToken(response.token)
+            localStorage.setItem("fraudshield_user", JSON.stringify(response.user))
+            localStorage.setItem("fraudshield_token", response.token)
+            setIsLoading(false)
+            router.push("/")
+            return { success: true }
+        }
+
+        setIsLoading(false)
+        return { success: false, message: "Face login failed" }
+    }
+
     const logout = () => {
         setUser(null)
         setToken(null)
@@ -81,7 +105,7 @@ interface AuthContextType {
     }
 
     return (
-        <AuthContext.Provider value={{ user, token, isLoading, login, signup, logout }}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={{ user, token, isLoading, login, signup, logout, faceLogin }}>{children}</AuthContext.Provider>
     )
     }
 
