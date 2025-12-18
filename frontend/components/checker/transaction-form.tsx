@@ -212,10 +212,6 @@ export function TransactionForm({ onSubmit, isLoading }: TransactionFormProps) {
                   <Dices className="mr-2 h-4 w-4" />
                   Sample Safe
                 </Button>
-                <Button type="button" variant="outline" onClick={() => generateSampleData(true)} disabled={isLoading} className="w-full">
-                  <Dices className="mr-2 h-4 w-4" />
-                  Sample Fraud
-                </Button>
                 <Button type="button" variant="outline" onClick={handleFileClick} disabled={isLoading} className="w-full">
                   Upload JSON
                 </Button>

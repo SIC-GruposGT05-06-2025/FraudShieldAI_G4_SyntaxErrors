@@ -2687,6 +2687,202 @@
       "card_type": "Unknown",
       "saved_at": "2025-12-18T11:36:51.099800",
       "sequence_number": 96
+    },
+    {
+      "transaction_id": "09d52b1c-68d4-4482-a08a-9d3a88199bf5",
+      "id": "09d52b1c-68d4-4482-a08a-9d3a88199bf5",
+      "is_fraud": true,
+      "fraud_probability": 0.8718,
+      "risk_score": 87,
+      "risk_level": "CRITICAL",
+      "confidence": 0.8718,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 4800.0
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 12.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:27:50.289552",
+      "amount": 4800.0,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:27:50.291418",
+      "sequence_number": 97
+    },
+    {
+      "transaction_id": "f66fb808-98ed-4d5c-9c27-97b71b5b47f8",
+      "id": "f66fb808-98ed-4d5c-9c27-97b71b5b47f8",
+      "is_fraud": false,
+      "fraud_probability": 0.0138,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9862,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 91.06
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 4477.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:28:07.161668",
+      "amount": 91.06,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:28:07.183370",
+      "sequence_number": 98
+    },
+    {
+      "transaction_id": "6e3f316b-bb1c-4b29-901e-03d465262ce0",
+      "id": "6e3f316b-bb1c-4b29-901e-03d465262ce0",
+      "is_fraud": false,
+      "fraud_probability": 0.0143,
+      "risk_score": 1,
+      "risk_level": "LOW",
+      "confidence": 0.9857,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2903.04
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 61.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:28:10.059580",
+      "amount": 2903.04,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:28:10.080829",
+      "sequence_number": 99
+    },
+    {
+      "transaction_id": "7889abf5-4696-47fe-b6e4-c0d096769a79",
+      "id": "7889abf5-4696-47fe-b6e4-c0d096769a79",
+      "is_fraud": false,
+      "fraud_probability": 0.0075,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9925,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 2450.84
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 82.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:28:14.481125",
+      "amount": 2450.84,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:28:14.500358",
+      "sequence_number": 100
+    },
+    {
+      "transaction_id": "d883f522-52c6-4f69-b0e3-2007103ad3d8",
+      "id": "d883f522-52c6-4f69-b0e3-2007103ad3d8",
+      "is_fraud": false,
+      "fraud_probability": 0.0095,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9905,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 154.54
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 4863.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:28:28.994325",
+      "amount": 154.54,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:28:29.013802",
+      "sequence_number": 101
+    },
+    {
+      "transaction_id": "3886d4d2-1347-48c8-832f-0f49b71dac88",
+      "id": "3886d4d2-1347-48c8-832f-0f49b71dac88",
+      "is_fraud": true,
+      "fraud_probability": 0.8761,
+      "risk_score": 87,
+      "risk_level": "CRITICAL",
+      "confidence": 0.8761,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 400.0
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 85.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:28:42.730322",
+      "amount": 400.0,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:28:42.763089",
+      "sequence_number": 102
+    },
+    {
+      "transaction_id": "22c83f7b-ef74-4a64-8db2-f059ffe07298",
+      "id": "22c83f7b-ef74-4a64-8db2-f059ffe07298",
+      "is_fraud": false,
+      "fraud_probability": 0.0061,
+      "risk_score": 0,
+      "risk_level": "LOW",
+      "confidence": 0.9939,
+      "factors": [
+        {
+          "feature": "Amount",
+          "impact": "High",
+          "value": 80.09
+        },
+        {
+          "feature": "Time",
+          "impact": "Medium",
+          "value": 809.0
+        }
+      ],
+      "timestamp": "2025-12-18T13:29:00.705602",
+      "amount": 80.09,
+      "merchant": "Online",
+      "location": "N/A",
+      "card_type": "Unknown",
+      "saved_at": "2025-12-18T13:29:00.706817",
+      "sequence_number": 103
     }
   ]
 }
